@@ -71,11 +71,11 @@ func (f *helper) CopyDir(src string, dst string) error {
 		dstfp := path.Join(dst, fd.Name())
 
 		if fd.IsDir() {
-			if err = Dir(srcfp, dstfp); err != nil {
+			if err = f.CopyDir(srcfp, dstfp); err != nil {
 				fmt.Println(err)
 			}
 		} else {
-			if err = File(srcfp, dstfp); err != nil {
+			if err = f.CopyFile(srcfp, dstfp); err != nil {
 				fmt.Println(err)
 			}
 		}
